@@ -3,7 +3,7 @@ layout: base
 title: Bulk Comment Count
 permalink: /comment-count-bulk/
 nav_order: 3
-subtitle: Comment counts for many pages at once — ideal for a blog index or archive.
+subtitle: Comment counts for many pages at once. Ideal for a blog index or archive.
 ---
 
 <div class="panel">
@@ -11,7 +11,7 @@ subtitle: Comment counts for many pages at once — ideal for a blog index or ar
     {% assign posts = "intro,getting-started,changelog" | split: "," %}
     {% for slug in posts %}
       <li>
-        <a href="/posts/{{ slug }}/">{{ slug }}</a> —
+        <a href="/posts/{{ slug }}/">{{ slug }}</a>:
         <span class="fast-comments-count" data-fast-comments-url-id="/posts/{{ slug }}/"></span> comments
       </li>
     {% endfor %}

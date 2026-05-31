@@ -49,7 +49,7 @@ fastcomments:
   tenant_id: demo
 ```
 
-Then add a tag wherever you want the widget — in a layout, a post, or a page:
+Then add a tag wherever you want the widget, in a layout, a post, or a page:
 
 ```liquid
 {% raw %}{% fastcomments %}{% endraw %}
@@ -62,7 +62,7 @@ That's it. Replace `demo` with your FastComments tenant id (find it under
 
 | Tag | Description |
 | --- | --- |
-| `fastcomments` | Live commenting widget with replies, voting, and more |
+| `fastcomments` | Live commenting with replies, voting, moderation, and realtime updates |
 | `fastcomments_comment_count` | Comment count for the current page |
 | `fastcomments_comment_count_bulk` | Comment counts for many pages on one list/index page |
 | `fastcomments_live_chat` | Realtime streaming chat widget |
@@ -77,26 +77,26 @@ That's it. Replace `demo` with your FastComments tenant id (find it under
 ### Examples
 
 ```liquid
-{% raw %}{# Comment count — the widget renders its own label, e.g. "0 comments" #}
+{% raw %}{# Comment count. The widget renders its own label, e.g. "0 comments" #}
 {% fastcomments_comment_count %}
 
 {# Live chat #}
 {% fastcomments_live_chat %}
 
-{# Collab chat — point it at a content element with a CSS selector #}
+{# Collab chat. Point it at a content element with a CSS selector #}
 <article id="post-body">
   <p>Highlight me to leave a comment.</p>
 </article>
 {% fastcomments_collab_chat target="#post-body" %}
 
-{# Image chat — point it at an image element with a CSS selector #}
+{# Image chat. Point it at an image element with a CSS selector #}
 <img id="hero" src="/hero.jpg" alt="Hero image">
 {% fastcomments_image_chat target="#hero" %}
 
 {# Reviews summary #}
 {% fastcomments_reviews_summary %}
 
-{# User activity feed — requires a user id #}
+{# User activity feed. Requires a user id #}
 {% fastcomments_user_activity_feed user_id="demo:demo-user" %}
 
 {# Bulk comment counts for a blog index #}
@@ -152,7 +152,7 @@ bulk count) are not tied to a page and do not derive these.
 
 ### EU data residency
 
-EU customers add `region: eu` — either globally:
+EU customers add `region: eu`, either globally:
 
 ```yaml
 fastcomments:
