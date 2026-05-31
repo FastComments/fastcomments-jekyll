@@ -1,0 +1,21 @@
+---
+layout: base
+title: Collab Chat
+permalink: /collab-chat/
+nav_order: 5
+subtitle: Collaborative inline commenting — readers highlight text to leave a note.
+---
+
+<div class="panel">
+  <article id="post-body">
+    <p>Highlight any part of this paragraph to start a collaborative comment thread
+       anchored to the selected text. Collab chat attaches to the element you point
+       it at with a CSS selector.</p>
+  </article>
+
+  {% fastcomments_collab_chat target="#post-body" %}
+</div>
+
+<pre>{% raw %}<article id="post-body">...</article>
+
+{% fastcomments_collab_chat target="#post-body" %}{% endraw %}</pre>

@@ -1,0 +1,10 @@
+/pkg/
+/tmp/
+.bundle/
+vendor/
+Gemfile.lock
+_site/
+.jekyll-cache/
+.jekyll-metadata
+coverage/
+*.gem

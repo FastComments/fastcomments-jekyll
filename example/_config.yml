@@ -1,0 +1,13 @@
+title: FastComments Jekyll Showcase
+description: Every FastComments widget running against the public demo tenant.
+url: "https://example.com"
+
+# Global FastComments defaults. Every tag inherits tenant_id from here, so you
+# only set it in one place. Add region: eu for EU data residency.
+fastcomments:
+  tenant_id: demo
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,0 +1,18 @@
+---
+layout: base
+title: Image Chat
+permalink: /image-chat/
+nav_order: 6
+subtitle: Coordinate-based annotation and discussion on an image.
+---
+
+<div class="panel">
+  <img id="hero" src="https://fastcomments.com/images/svg/v2/logo.svg" alt="Annotate me"
+       style="max-width:320px;display:block;margin-bottom:16px;">
+
+  {% fastcomments_image_chat target="#hero" %}
+</div>
+
+<pre>{% raw %}<img id="hero" src="/hero.jpg" alt="Annotate me">
+
+{% fastcomments_image_chat target="#hero" %}{% endraw %}</pre>

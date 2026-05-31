@@ -1,0 +1,26 @@
+---
+layout: base
+title: Bulk Comment Count
+permalink: /comment-count-bulk/
+nav_order: 3
+subtitle: Comment counts for many pages at once — ideal for a blog index or archive.
+---
+
+<div class="panel">
+  <ul>
+    {% assign posts = "intro,getting-started,changelog" | split: "," %}
+    {% for slug in posts %}
+      <li>
+        <a href="/posts/{{ slug }}/">{{ slug }}</a> —
+        <span class="fast-comments-count" data-fast-comments-url-id="/posts/{{ slug }}/"></span> comments
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% fastcomments_comment_count_bulk %}
+</div>
+
+<pre>{% raw %}<span class="fast-comments-count" data-fast-comments-url-id="/posts/intro/"></span>
+<span class="fast-comments-count" data-fast-comments-url-id="/posts/getting-started/"></span>
+
+{% fastcomments_comment_count_bulk %}{% endraw %}</pre>
