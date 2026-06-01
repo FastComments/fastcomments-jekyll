@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Live Chat
 permalink: /live-chat/
 nav_order: 4
+nav_group: widgets
+category: Widgets
+hint: Realtime stream widget
 subtitle: A realtime streaming chat widget.
+code_label: live-chat.html
+snippet: |
+  {% fastcomments_live_chat %}
 ---
 
-<div class="panel">
-  {% fastcomments_live_chat %}
-</div>
-
-<pre>{% raw %}{% fastcomments_live_chat %}{% endraw %}</pre>
+{% fastcomments_live_chat %}

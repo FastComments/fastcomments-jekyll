@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Recent Discussions
 permalink: /recent-discussions/
 nav_order: 8
+nav_group: widgets
+category: Widgets
+hint: Most active threads
 subtitle: The most recently active discussion threads.
+code_label: recent-discussions.html
+snippet: |
+  {% fastcomments_recent_discussions %}
 ---
 
-<div class="panel">
-  {% fastcomments_recent_discussions %}
-</div>
-
-<pre>{% raw %}{% fastcomments_recent_discussions %}{% endraw %}</pre>
+{% fastcomments_recent_discussions %}

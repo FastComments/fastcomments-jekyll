@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Comments
 permalink: /comments/
 nav_order: 1
+nav_group: widgets
+category: Widgets
+hint: Full live commenting widget
 subtitle: The flagship live commenting widget. Replies, voting, moderation, and realtime sync.
+code_label: comments.html
+snippet: |
+  {% fastcomments %}
 ---
 
-<div class="panel">
-  {% fastcomments %}
-</div>
-
-<pre>{% raw %}{% fastcomments %}{% endraw %}</pre>
+{% fastcomments %}

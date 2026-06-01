@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: User Activity Feed
 permalink: /user-activity-feed/
 nav_order: 11
+nav_group: widgets
+category: Widgets
+hint: Per-user timeline
 subtitle: A per-user activity timeline. Requires a user_id.
+code_label: user-activity-feed.html
+snippet: |
+  {% fastcomments_user_activity_feed user_id="demo:demo-user" %}
 ---
 
-<div class="panel">
-  {% fastcomments_user_activity_feed user_id="demo:demo-user" %}
-</div>
-
-<pre>{% raw %}{% fastcomments_user_activity_feed user_id="demo:demo-user" %}{% endraw %}</pre>
+{% fastcomments_user_activity_feed user_id="demo:demo-user" %}

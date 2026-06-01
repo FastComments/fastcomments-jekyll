@@ -3,16 +3,35 @@ layout: base
 title: Overview
 permalink: /
 nav_order: 0
-subtitle: A working Jekyll site demonstrating every FastComments Liquid tag against the public demo tenant.
 ---
 
-<div class="panel">
-  <p>Each page in the left rail embeds one FastComments widget with a single Liquid tag.
-     The tenant id is set once in <code>_config.yml</code> under <code>fastcomments.tenant_id</code>,
-     so the tags below need no arguments.</p>
+<div class="fc-hero">
+  <div>
+    <div class="fc-hero__label">FastComments · Jekyll</div>
+    <h1 class="fc-hero__title">Comments for <em>Jekyll</em>, in one Liquid tag.</h1>
+    <p class="fc-hero__body">Every FastComments widget as a Jekyll Liquid tag. Set your tenant id once in <code>_config.yml</code>, then drop {% raw %}<code>{% fastcomments %}</code>{% endraw %} into any layout, post, or page. This showcase runs against the public <code>demo</code> tenant.</p>
+  </div>
+  <div class="fc-hero__meta">
+    <div class="fc-meta-card">
+      <div class="fc-meta-card__key">Install</div>
+      <div class="fc-meta-card__value">gem fastcomments-jekyll</div>
+    </div>
+    <div class="fc-meta-card">
+      <div class="fc-meta-card__key">Widgets</div>
+      <div class="fc-meta-card__value fc-meta-card__value--gradient">11</div>
+    </div>
+  </div>
+</div>
 
-  <p>Add a tag to any page or layout:</p>
-  <pre>{% raw %}{% fastcomments %}{% endraw %}</pre>
-
-  <p>Browse the examples in the sidebar, then copy the snippet shown on each page into your own site.</p>
+<div class="fc-section-title"><h2>Widgets</h2><span>pick one</span><div class="fc-rule"></div></div>
+<div class="fc-grid">
+  {% assign widgets = site.pages | where: "nav_group", "widgets" | sort: "nav_order" %}
+  {% for item in widgets %}
+  <a class="fc-card" href="{{ item.url | relative_url }}">
+    <span class="fc-card__kind">Widget</span>
+    <span class="fc-card__title">{{ item.title }}</span>
+    <span class="fc-card__hint">{{ item.hint }}</span>
+    <span class="fc-card__cta">View</span>
+  </a>
+  {% endfor %}
 </div>

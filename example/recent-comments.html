@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Recent Comments
 permalink: /recent-comments/
 nav_order: 7
+nav_group: widgets
+category: Widgets
+hint: Cross-site comment stream
 subtitle: A stream of the most recent comments across the whole site.
+code_label: recent-comments.html
+snippet: |
+  {% fastcomments_recent_comments %}
 ---
 
-<div class="panel">
-  {% fastcomments_recent_comments %}
-</div>
-
-<pre>{% raw %}{% fastcomments_recent_comments %}{% endraw %}</pre>
+{% fastcomments_recent_comments %}

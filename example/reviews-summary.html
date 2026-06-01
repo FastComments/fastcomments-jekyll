@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Reviews Summary
 permalink: /reviews-summary/
 nav_order: 9
+nav_group: widgets
+category: Widgets
+hint: Star ratings overview
 subtitle: A star-rating reviews summary for the page.
+code_label: reviews-summary.html
+snippet: |
+  {% fastcomments_reviews_summary %}
 ---
 
-<div class="panel">
-  {% fastcomments_reviews_summary %}
-</div>
-
-<pre>{% raw %}{% fastcomments_reviews_summary %}{% endraw %}</pre>
+{% fastcomments_reviews_summary %}

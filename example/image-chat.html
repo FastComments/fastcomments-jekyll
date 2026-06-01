@@ -1,18 +1,19 @@
 ---
-layout: base
+layout: demo
 title: Image Chat
 permalink: /image-chat/
 nav_order: 6
+nav_group: widgets
+category: Widgets
+hint: Region comments on images
 subtitle: Coordinate-based annotation and discussion on an image.
----
-
-<div class="panel">
-  <img id="hero" src="https://fastcomments.com/images/image-chat-demo-1.jpg" alt="Annotate me"
-       style="max-width:600px;width:100%;display:block;margin-bottom:16px;">
+code_label: image-chat.html
+snippet: |
+  <img id="hero" src="/hero.jpg" alt="Annotate me">
 
   {% fastcomments_image_chat target="#hero" %}
-</div>
+---
 
-<pre>{% raw %}&lt;img id="hero" src="/hero.jpg" alt="Annotate me"&gt;
+<img id="hero" src="https://fastcomments.com/images/image-chat-demo-1.jpg" alt="Annotate me" style="max-width:600px;width:100%;display:block;margin-bottom:16px;">
 
-{% fastcomments_image_chat target="#hero" %}{% endraw %}</pre>
+{% fastcomments_image_chat target="#hero" %}

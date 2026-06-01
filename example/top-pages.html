@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Top Pages
 permalink: /top-pages/
 nav_order: 10
+nav_group: widgets
+category: Widgets
+hint: Pages ranked by activity
 subtitle: The pages with the most comment activity.
+code_label: top-pages.html
+snippet: |
+  {% fastcomments_top_pages %}
 ---
 
-<div class="panel">
-  {% fastcomments_top_pages %}
-</div>
-
-<pre>{% raw %}{% fastcomments_top_pages %}{% endraw %}</pre>
+{% fastcomments_top_pages %}

@@ -1,16 +1,15 @@
 ---
-layout: base
+layout: demo
 title: EU Region
 permalink: /eu/
 nav_order: 12
+nav_group: config
+category: Configuration
+hint: Data residency via region
 subtitle: EU data residency. Pass region="eu" to load from the EU CDN and API.
+code_label: eu.html
+snippet: |
+  {% fastcomments region="eu" %}
 ---
 
-<div class="panel">
-  {% fastcomments region="eu" url_id="jekyll-demo-eu" %}
-</div>
-
-<pre>{% raw %}{% fastcomments region="eu" %}{% endraw %}</pre>
-
-<p>Set <code>region: eu</code> once under <code>fastcomments:</code> in <code>_config.yml</code>
-   to apply it to every widget.</p>
+{% fastcomments region="eu" url_id="jekyll-demo-eu" %}

@@ -4,47 +4,144 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} · FastComments Jekyll</title>
-  <style>
-    :root { --brand: #6750ff; --ink: #14121f; --muted: #5b5870; --line: #e7e5f0; --bg: #faf9ff; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-           color: var(--ink); background: var(--bg); line-height: 1.55; }
-    .shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
-    .rail { border-right: 1px solid var(--line); padding: 24px; background: #fff; }
-    .brand { font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; display: block; margin-bottom: 4px; }
-    .brand span { color: var(--brand); }
-    .rail .tag { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
-    .nav a { display: block; padding: 7px 10px; border-radius: 8px; color: var(--ink);
-             text-decoration: none; font-size: 15px; }
-    .nav a:hover { background: var(--bg); }
-    .nav a.active { background: var(--brand); color: #fff; }
-    .nav .group { color: var(--muted); font-size: 13px; font-weight: 600; margin: 18px 0 6px; }
-    main { padding: 40px 48px; max-width: 880px; }
-    h1 { font-size: 30px; margin: 0 0 8px; }
-    .subtitle { color: var(--muted); margin: 0 0 28px; font-size: 17px; }
-    .panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
-    pre { background: #14121f; color: #efeefc; padding: 16px; border-radius: 10px; overflow:auto; font-size: 14px; }
-    a { color: var(--brand); }
-  </style>
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('fc-showcase-theme');
+        if (s !== 'light' && s !== 'dark') {
+          s = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-fc-theme', s);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="{{ '/assets/fastcomments-showcase.css' | relative_url }}">
 </head>
 <body>
-  <div class="shell">
-    <aside class="rail">
-      <a class="brand" href="{{ '/' | relative_url }}">Fast<span>Comments</span></a>
-      <div class="tag">Jekyll showcase · tenant demo</div>
-      <nav class="nav">
-        <div class="group">Widgets</div>
-        {% assign items = site.pages | where_exp: "p", "p.nav_order" | sort: "nav_order" %}
-        {% for item in items %}
-          <a href="{{ item.url | relative_url }}" class="{% if page.url == item.url %}active{% endif %}">{{ item.title }}</a>
-        {% endfor %}
+  <div class="fc-shell">
+    <aside class="fc-rail">
+      <a class="fc-brand" href="{{ '/' | relative_url }}">
+        <img class="fc-brand__logo fc-brand__logo--light" src="https://fastcomments.com/images/svg/v2/logo.svg" alt="FastComments">
+        <img class="fc-brand__logo fc-brand__logo--dark" src="https://fastcomments.com/images/svg/v2/logo_white.svg" alt="" aria-hidden="true">
+        <span class="fc-brand__wordmark">
+          <span class="fc-brand__name">FastComments</span>
+          <span class="fc-brand__slug">Jekyll · showcase</span>
+        </span>
+      </a>
+
+      <nav class="fc-nav" aria-label="Examples">
+        <div class="fc-nav__group">
+          <div class="fc-nav__heading"><span>01</span><em>Widgets</em></div>
+          {% assign widgets = site.pages | where: "nav_group", "widgets" | sort: "nav_order" %}
+          {% for item in widgets %}
+            <a class="fc-nav__item {% if page.url == item.url %}is-active{% endif %}" href="{{ item.url | relative_url }}">
+              <span class="fc-nav__item-label">{{ item.title }}</span>
+              <span class="fc-nav__item-hint">{{ item.hint }}</span>
+            </a>
+          {% endfor %}
+        </div>
+        <div class="fc-nav__group">
+          <div class="fc-nav__heading"><span>02</span><em>Configuration</em></div>
+          {% assign flows = site.pages | where: "nav_group", "config" | sort: "nav_order" %}
+          {% for item in flows %}
+            <a class="fc-nav__item {% if page.url == item.url %}is-active{% endif %}" href="{{ item.url | relative_url }}">
+              <span class="fc-nav__item-label">{{ item.title }}</span>
+              <span class="fc-nav__item-hint">{{ item.hint }}</span>
+            </a>
+          {% endfor %}
+        </div>
       </nav>
+
+      <footer class="fc-rail__foot">
+        <div class="fc-theme-toggle" role="group" aria-label="Theme">
+          <button type="button" class="fc-theme-toggle__btn" data-fc-theme-btn="light">Light</button>
+          <button type="button" class="fc-theme-toggle__btn" data-fc-theme-btn="dark">Dark</button>
+        </div>
+        <div><code>gem "fastcomments-jekyll"</code></div>
+        <a href="https://fastcomments.com" rel="noopener">fastcomments.com</a>
+      </footer>
     </aside>
-    <main>
-      <h1>{{ page.title }}</h1>
-      {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
-      {{ content }}
-    </main>
+
+    <main class="fc-stage">{{ content }}</main>
   </div>
+
+  <script>
+    (function () {
+      var STORAGE = 'fc-showcase-theme';
+      var USER_SET = STORAGE + ':user-set';
+      window.__fcInstances = window.__fcInstances || [];
+
+      // Wrap the widget globals so each instance is recorded and can be
+      // re-rendered with hasDarkBackground when the theme toggles.
+      ['FastCommentsUI', 'FastCommentsLiveChat', 'FastCommentsCollabChat', 'FastCommentsImageChat',
+       'FastCommentsRecentCommentsV2', 'FastCommentsRecentDiscussionsV2', 'FastCommentsReviewsSummaryWidget',
+       'FastCommentsTopPagesV2', 'FastCommentsUserActivity', 'FastCommentsCommentCount'].forEach(function (name) {
+        var desc = Object.getOwnPropertyDescriptor(window, name);
+        if (desc && desc.__fcPatched) return;
+        var current;
+        Object.defineProperty(window, name, {
+          configurable: true,
+          get: function () {
+            if (!current) return undefined;
+            return function () {
+              var inst = current.apply(this, arguments);
+              if (inst && typeof inst.update === 'function') {
+                window.__fcInstances.push({ inst: inst, base: arguments[1] });
+              }
+              return inst;
+            };
+          },
+          set: function (v) { current = v; }
+        });
+        Object.getOwnPropertyDescriptor(window, name).__fcPatched = true;
+      });
+
+      function applyTheme(next) {
+        document.documentElement.setAttribute('data-fc-theme', next);
+        try { window.localStorage.setItem(STORAGE, next); } catch (_) {}
+        document.querySelectorAll('[data-fc-theme-btn]').forEach(function (b) {
+          b.classList.toggle('is-active', b.getAttribute('data-fc-theme-btn') === next);
+        });
+        var isDark = next === 'dark';
+        (window.__fcInstances || []).forEach(function (entry) {
+          try { entry.inst.update(Object.assign({}, entry.base, { hasDarkBackground: isDark })); } catch (_) {}
+        });
+      }
+      function initialTheme() {
+        try { var s = window.localStorage.getItem(STORAGE); if (s === 'light' || s === 'dark') return s; } catch (_) {}
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      applyTheme(initialTheme());
+
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        if (t && t.matches && t.matches('[data-fc-theme-btn]')) {
+          try { window.localStorage.setItem(USER_SET, '1'); } catch (_) {}
+          applyTheme(t.getAttribute('data-fc-theme-btn'));
+        }
+      });
+      if (window.matchMedia) {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        var handler = function (e) {
+          var userSet; try { userSet = window.localStorage.getItem(USER_SET); } catch (_) {}
+          if (!userSet) applyTheme(e.matches ? 'dark' : 'light');
+        };
+        if (mq.addEventListener) mq.addEventListener('change', handler);
+      }
+
+      // Copy buttons on code panels.
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        if (!t || !t.matches || !t.matches('[data-fc-copy]')) return;
+        var panel = t.closest('.fc-code-panel');
+        var pre = panel && panel.querySelector('.fc-code-panel__body');
+        if (!pre || !navigator.clipboard) return;
+        navigator.clipboard.writeText(pre.textContent || '').then(function () {
+          var prev = t.textContent; t.textContent = 'Copied';
+          setTimeout(function () { t.textContent = prev; }, 1200);
+        }).catch(function () {});
+      });
+    })();
+  </script>
 </body>
 </html>

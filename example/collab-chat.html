@@ -1,21 +1,21 @@
 ---
-layout: base
+layout: demo
 title: Collab Chat
 permalink: /collab-chat/
 nav_order: 5
+nav_group: widgets
+category: Widgets
+hint: Text-anchored threads
 subtitle: Collaborative inline commenting. Readers highlight text to leave a note.
----
-
-<div class="panel">
-  <article id="post-body">
-    <p>Highlight any part of this paragraph to start a collaborative comment thread
-       anchored to the selected text. Collab chat attaches to the element you point
-       it at with a CSS selector.</p>
-  </article>
+code_label: collab-chat.html
+snippet: |
+  <article id="post-body">...</article>
 
   {% fastcomments_collab_chat target="#post-body" %}
-</div>
+---
 
-<pre>{% raw %}&lt;article id="post-body"&gt;...&lt;/article&gt;
+<article id="post-body">
+  <p>Highlight any part of this paragraph to start a collaborative comment thread anchored to the selected text. Collab chat attaches to the element you point it at with a CSS selector.</p>
+</article>
 
-{% fastcomments_collab_chat target="#post-body" %}{% endraw %}</pre>
+{% fastcomments_collab_chat target="#post-body" %}

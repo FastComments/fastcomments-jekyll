@@ -1,0 +1,29 @@
+---
+layout: base
+---
+<div class="fc-demo">
+  <header class="fc-demo__head">
+    <div>
+      <div class="fc-demo__breadcrumb">{{ page.category | default: "Widgets" }} <em>/ {{ page.title }}</em></div>
+      <h1 class="fc-demo__title">{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="fc-demo__subtitle">{{ page.subtitle }}</p>{% endif %}
+    </div>
+    <div class="fc-demo__actions">
+      <span class="fc-tag fc-tag--brand">Tenant · demo</span>
+    </div>
+  </header>
+
+  <div class="fc-stage__panel fc-stage__panel--light">
+    {{ content }}
+  </div>
+
+  {% if page.snippet %}
+  <div class="fc-code-panel">
+    <div class="fc-code-panel__head">
+      <span class="fc-code-panel__head-label">{{ page.code_label }}</span>
+      <button type="button" class="fc-code-panel__copy" data-fc-copy>Copy</button>
+    </div>
+    <pre class="fc-code-panel__body">{{ page.snippet | escape }}</pre>
+  </div>
+  {% endif %}
+</div>

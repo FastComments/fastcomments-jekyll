@@ -1,13 +1,15 @@
 ---
-layout: base
+layout: demo
 title: Comment Count
 permalink: /comment-count/
 nav_order: 2
-subtitle: An inline comment count for the current page.
+nav_group: widgets
+category: Widgets
+hint: Inline count badge
+subtitle: An inline comment count for the current page. The widget renders its own label.
+code_label: comment-count.html
+snippet: |
+  {% fastcomments_comment_count %}
 ---
 
-<div class="panel">
-  {% fastcomments_comment_count %}
-</div>
-
-<pre>{% raw %}{% fastcomments_comment_count %}{% endraw %}</pre>
+{% fastcomments_comment_count %}
