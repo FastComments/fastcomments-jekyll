@@ -6,7 +6,7 @@ Adds Liquid tags like `{% raw %}{% fastcomments %}{% endraw %}` that you drop st
 
 ## Live Demo
 
-Try every widget live at <https://fastcomments.com/commenting-system-for-jekyll>.
+Try every widget live at <https://fastcomments.com/commenting-system-for-jekyll/>.
 
 ## Live Showcase
 
